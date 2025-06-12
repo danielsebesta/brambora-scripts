@@ -16,30 +16,31 @@ echo
 
 # Funkce pro zjisteni webserveru
 detect_webserver() {
-    echo "🔍 Zkousim zjistit, zda mas nainstalovany nginx nebo apache2..."
+    echo "🔍 Zkousim zjistit, zda mas nainstalovany nginx nebo apache2..." >&2
 
     if systemctl is-active --quiet nginx; then
-        echo "✅ Nalezen nginx"
+        echo "✅ Nalezen nginx" >&2
         echo "nginx"
     elif systemctl is-active --quiet apache2; then
-        echo "✅ Nalezen apache2"
+        echo "✅ Nalezen apache2" >&2
         echo "apache2"
     else
-        echo "⚠️ Nenalezen zadny aktivni webserver."
-        echo ""
-        echo "Vyber prosim webserver:"
-        echo "1) nginx"
-        echo "2) apache2"
+        echo "⚠️ Nenalezen zadny aktivni webserver." >&2
+        echo "" >&2
+        echo "Vyber prosim webserver:" >&2
+        echo "1) nginx" >&2
+        echo "2) apache2" >&2
         while true; do
             read -rp "Zadej cislo [1-2]: " wschoice
             case "$wschoice" in
                 1) echo "nginx"; break ;;
                 2) echo "apache2"; break ;;
-                *) echo "Neplatna volba, zkus to znovu." ;;
+                *) echo "Neplatna volba, zkus to znovu." >&2 ;;
             esac
         done
     fi
 }
+
 
 WEBSERVER=$(detect_webserver)
 
