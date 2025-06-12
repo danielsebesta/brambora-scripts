@@ -103,6 +103,9 @@ echo "🧠 Instalace earlyoom (prevence pri malo RAM)..."
 apt install -y earlyoom
 systemctl enable --now earlyoom
 
+echo "🔐 Instalace certbotu pro Let's Encrypt..."
+apt install -y certbot python3-certbot-nginx python3-certbot-apache
+
 # 📊 htop – monitoring
 echo "📊 Instalace htop..."
 apt install -y htop
