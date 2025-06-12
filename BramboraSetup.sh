@@ -1,4 +1,10 @@
 #!/bin/bash
+
+if [[ "$EUID" -ne 0 ]]; then
+  echo "❌ Tento skript musis spustit jako root nebo pres sudo!"
+  exit 1
+fi
+
 set -e
 
 clear
@@ -11,7 +17,7 @@ cat << "EOF"
 |___/_| \__,_|_|_|_|_.__/\___/_| \__,_|___/\___|\__|\_,_| .__/
                                                         |_|   
 
-🥔 Vitej u BramboraSetup – univerzalni setup pro chude VPS (1 CPU, 1 GB RAM)
+🥔 Vitej u BramboraSetup – univerzalni setup pro Ubuntu VPS
 
 EOF
 
